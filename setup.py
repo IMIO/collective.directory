@@ -38,6 +38,7 @@ setup(name='collective.directory',
       install_requires=[
           'setuptools',
           'Plone',
+          'five.grok',
           # -*- Extra requirements: -*-
       ],
       extras_require={
