@@ -17,8 +17,6 @@ class CollectiveDirectoryPloneWithPackageLayer(PloneWithPackageLayer):
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'collective.directory:testing')
-        footer_static = portal['footer-static']
-        footer_static.setText('Footer static custom content')
 
 
 COLLECTIVE_DIRECTORY_FIXTURE = CollectiveDirectoryPloneWithPackageLayer(
