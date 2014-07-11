@@ -1,6 +1,9 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
 
+    <include package="five.grok" />
+    <include package="plone.app.dexterity" />
+
     <include package=".content" />
 
     <!-- Register an extension profile to make the product installable -->

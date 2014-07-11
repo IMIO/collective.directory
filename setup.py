@@ -38,7 +38,7 @@ setup(name='collective.directory',
       install_requires=[
           'setuptools',
           'Plone',
-          'five.grok',
+          'plone.app.dexterity [grok]',
           # -*- Extra requirements: -*-
       ],
       extras_require={
