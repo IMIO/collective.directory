@@ -20,10 +20,6 @@ class IDirectory(model.Schema):
     )
 
 
-class Directory():
-    pass
-
-
 class View(grok.View):
     grok.context(IDirectory)
     grok.require('zope2.View')
