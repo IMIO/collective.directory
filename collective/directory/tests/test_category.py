@@ -34,10 +34,7 @@ class TestCategoryIntegration(unittest.TestCase):
         self.assertTrue(ICategory.providedBy(c1))
 
     def test_disallowed_adding(self):
-        try:
-            self.folder.invokeFactory('collective.directory.category', 'category1')
-        except ValueError:
-            pass
+        self.assertRaises(ValueError, self.folder.invokeFactory, 'collective.directory.category', 'category1')
 
     def test_fti(self):
         fti = queryUtility(IDexterityFTI, name='collective.directory.category')
