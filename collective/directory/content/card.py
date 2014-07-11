@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from collective.directory import _
+from five import grok
 from plone.supermodel import model
 from zope import schema
 
@@ -19,5 +20,6 @@ class ICard(model.Schema):
     )
 
 
-class Card():
-    pass
+class View(grok.View):
+    grok.context(ICard)
+    grok.require('zope2.View')
