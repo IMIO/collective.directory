@@ -1,4 +1,3 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
@@ -14,7 +13,7 @@
         <div class="listing-cards">
           <tal:for tal:repeat="card view/getSubCards">
             <div class="card-summary">
-              <h2 tal:content="structure card/title" class="card-title" />
+                <a href="" tal:attributes="href card/absolute_url"><h2 tal:content="structure card/title" class="card-title" /></a>
 
               <h3 tal:content="structure card/subtitle" class="card-subtitle" />
 

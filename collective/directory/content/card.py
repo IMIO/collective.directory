@@ -8,6 +8,9 @@ from plone.namedfile.field import NamedBlobImage
 from plone.app.textfield import RichText
 
 
+grok.templatedir('templates')
+
+
 class ICard(model.Schema):
     """
     A "Card", directories can contain "Category"s
@@ -89,9 +92,7 @@ class DetailCard(grok.View):
     grok.require('zope2.View')
 
 
-class ListingCards(grok.View):
-    grok.context(ICard)
-    grok.require('zope2.View')
+class ListingCardsMixin():
 
     def getSubCards(self):
         portal_type = "collective.directory.card"
@@ -108,3 +109,8 @@ class ListingCards(grok.View):
             results.remove(self.context)
 
         return results
+
+
+class ListingCards(ListingCardsMixin, grok.View):
+    grok.context(ICard)
+    grok.require('zope2.View')

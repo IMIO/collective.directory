@@ -6,6 +6,9 @@ from plone.supermodel import model
 from zope import schema
 
 
+grok.templatedir('templates')
+
+
 class IDirectory(model.Schema):
     """
     A "Directory", directories can contain "Category"s

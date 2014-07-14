@@ -2,6 +2,7 @@
            xmlns:grok="http://namespaces.zope.org/grok">
 
     <grok:grok package="collective.directory.content.directory" />
+    <grok:grok package="collective.directory.content.category" />
     <grok:grok package="collective.directory.content.card" />
 
 </configure>

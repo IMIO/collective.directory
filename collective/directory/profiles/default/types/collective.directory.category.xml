@@ -28,10 +28,10 @@
 
   <!-- View information -->
   <property name="link_target"></property>
-  <property name="immediate_view">view</property>
-  <property name="default_view">view</property>
+  <property name="immediate_view">listingcards</property>
+  <property name="default_view">listingcards</property>
   <property name="view_methods">
-   <element value="view"/>
+   <element value="listingcards"/>
   </property>
   <property name="default_view_fallback">False</property>
   <property name="add_permission">cmf.AddPortalContent</property>
