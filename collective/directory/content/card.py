@@ -17,7 +17,7 @@ class ICard(model.Schema):
         title=_(u"Title"),
     )
 
-    sub_title = schema.TextLine(
+    subtitle = schema.TextLine(
         title=_(u"Subtitle"),
         required=False,
     )
