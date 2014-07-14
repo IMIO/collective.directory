@@ -54,7 +54,7 @@ class TestCategoryIntegration(unittest.TestCase):
     def test_view(self):
         self.directory.invokeFactory('collective.directory.category', 'category1')
         c1 = self.directory['category1']
-        view = c1.restrictedTraverse('@@view')
+        view = c1.restrictedTraverse('@@listingcards')
         self.assertNotEquals(None, view)
 
 

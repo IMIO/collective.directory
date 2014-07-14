@@ -23,6 +23,6 @@ class IDirectory(model.Schema):
     )
 
 
-class View(grok.View):
+class Directory(grok.View):
     grok.context(IDirectory)
     grok.require('zope2.View')

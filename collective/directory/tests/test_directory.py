@@ -49,7 +49,7 @@ class TestDirectoryIntegration(unittest.TestCase):
     def test_view(self):
         self.folder.invokeFactory('collective.directory.directory', 'directory1')
         d1 = self.folder['directory1']
-        view = d1.restrictedTraverse('@@view')
+        view = d1.restrictedTraverse('@@directory')
         self.assertNotEquals(None, view)
 
 
