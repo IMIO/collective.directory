@@ -92,3 +92,19 @@ class DetailCard(grok.View):
 class ListingCards(grok.View):
     grok.context(ICard)
     grok.require('zope2.View')
+
+    def getSubCards(self):
+        portal_type = "collective.directory.card"
+        results = self.context.portal_catalog.searchResults(
+            portal_type=portal_type,
+            path={'query': self.context.getPhysicalPath()},
+            review_state='published',
+            sort_on='sortable_title')
+        results = [result.getObject() for result in results]
+
+        # remove actual card because path get the actual too, not only the
+        # containing objects
+        if self.context.portal_type == portal_type:
+            results.remove(self.context)
+
+        return results
