@@ -84,6 +84,11 @@ class ICard(model.Schema):
     )
 
 
-class View(grok.View):
+class DetailCard(grok.View):
+    grok.context(ICard)
+    grok.require('zope2.View')
+
+
+class ListingCards(grok.View):
     grok.context(ICard)
     grok.require('zope2.View')
