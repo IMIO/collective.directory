@@ -9,26 +9,49 @@
   <body>
     <metal:main fill-slot="main">
       <tal:main-macro metal:define-macro="main">
-        <h2 tal:content="context/title" class="card-title" />
-        <h3 tal:content="context/subtitle" class="card-subtitle" />
-        <img tal:define="scales context/@@images;
-                         thumbnail python: scales.scale('photo', width=125, height=125);"
-            tal:condition="thumbnail"
-            tal:attributes="src thumbnail/url;
-                            width thumbnail/width;
-                            height thumbnail/height"
-            class="image-left" />
-        <p tal:content="context/address" class="card-address" />
-        <p tal:content="context/zip_code" class="card-zip-code" />
-        <p tal:content="context/city" class="card-city" />
-        <p tal:content="context/phone" class="card-phone" />
-        <p tal:content="context/mobile_phone" class="card-mobile-phone" />
-        <p tal:content="context/fax" class="card-fax" />
-        <p tal:content="context/email" class="card-email" />
-        <p tal:content="context/website" class="card-website" />
-        <p tal:content="context/schedule" class="card-schedule" />
-        <p tal:content="context/description" class="card-description" />
-        <p tal:content="structure context/content/output" class="card-content" />
+
+        <div class="card-detail">
+          <h2 tal:content="structure context/title" class="card-title" />
+
+          <h3 tal:content="structure context/subtitle" class="card-subtitle" />
+
+          <img tal:define="scales context/@@images;
+                           thumbnail python: scales.scale('photo', width=125, height=125);"
+              tal:condition="thumbnail"
+              tal:attributes="src thumbnail/url;
+                              width thumbnail/width;
+                              height thumbnail/height"
+              class="image-left" />
+
+          <p tal:content="structure context/address" class="card-address" />
+
+          <p tal:content="structure context/zip_code" class="card-zip-code" />
+
+          <p tal:content="structure context/city" class="card-city" />
+
+          <p tal:content="structure context/phone" class="card-phone" />
+
+          <p tal:content="structure context/mobile_phone" class="card-mobile-phone" />
+
+          <p tal:content="structure context/fax" class="card-fax" />
+
+          <p class="card-website">
+            <a tal:attributes="href string:mailto:${context/email}"
+               tal:content="context/email" />
+          </p>
+
+          <p class="card-website">
+            <a tal:attributes="href context/website"
+               tal:content="context/website" />
+          </p>
+
+          <p tal:content="structure context/schedule" class="card-schedule" />
+
+          <p tal:content="structure context/description" class="card-description" />
+
+          <p tal:content="structure context/content/output" class="card-content" />
+
+        </div>
       </tal:main-macro>
     </metal:main>
   </body>
