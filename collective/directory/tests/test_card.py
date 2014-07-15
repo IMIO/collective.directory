@@ -78,9 +78,12 @@ class TestCardIntegration(unittest.TestCase):
         self.category.invokeFactory('collective.directory.card', 'card2')
         c1 = self.category['card1']
         c2 = self.category['card2']
-        # XXX I have to publish c1 and c2
-        c1
-        c2
+
+        self.portal.portal_workflow.setDefaultChain("simple_publication_workflow")
+        workflowTool = getToolByName(self.portal, 'portal_workflow')
+        workflowTool.doActionFor(c1, 'publish')
+        workflowTool.doActionFor(c2, 'publish')
+
         listingview = self.category.restrictedTraverse('@@listingcards')
         cards = listingview.getSubCards()
         self.assertEqual(len(cards), 2)
