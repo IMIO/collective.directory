@@ -21,6 +21,8 @@
 
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
+     <element value="collective.geo.behaviour.interfaces.ICoordinates" />
+     <element value="collective.geo.behaviour.interfaces.IGeoFeatureStyle" />
    </property>
 
   <!-- View information -->

@@ -41,6 +41,8 @@ setup(name='collective.directory',
           'plone.app.dexterity [grok]',
           # -*- Extra requirements: -*-
           'plone.api',
+          'collective.geo.bundle',
+          'collective.geo.behaviour',
       ],
       extras_require={
           'test': [
