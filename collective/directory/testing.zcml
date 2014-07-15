@@ -11,4 +11,11 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:importStep
+      name="collective.directory.tests_content"
+      title="collective.directory test collection"
+      description="Various import steps that are not handled by GS import/export handlers."
+      handler=".setuphandlers.testSetup">
+  </genericsetup:importStep>
+
 </configure>

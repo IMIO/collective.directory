@@ -40,6 +40,7 @@ setup(name='collective.directory',
           'Plone',
           'plone.app.dexterity [grok]',
           # -*- Extra requirements: -*-
+          'plone.api',
       ],
       extras_require={
           'test': [
