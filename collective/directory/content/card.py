@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
-
-from collective.directory import _
 from five import grok
+from plone.directives import dexterity
+from plone.app.textfield import RichText
+from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
 from zope import schema
-from plone.namedfile.field import NamedBlobImage
-from plone.app.textfield import RichText
+
+from collective.directory import _
+from collective.schedulefield.schedule import Schedule
 
 
 grok.templatedir('templates')
@@ -71,10 +73,9 @@ class ICard(model.Schema):
         required=False,
     )
 
-    schedule = schema.Text(
+    schedule = Schedule(
         title=_(u"Schedule"),
-        required=False,
-    )
+        required=False)
 
     photo = NamedBlobImage(
         title=_(u"Photo"),
@@ -87,7 +88,7 @@ class ICard(model.Schema):
     )
 
 
-class DetailCard(grok.View):
+class DetailCard(dexterity.DisplayForm):
     grok.context(ICard)
     grok.require('zope2.View')
 
@@ -98,7 +99,7 @@ class ListingCardsMixin():
         portal_type = "collective.directory.card"
         results = self.context.portal_catalog.searchResults(
             portal_type=portal_type,
-            path={'query': self.context.getPhysicalPath()},
+            path={'query': '/'.join(self.context.getPhysicalPath())},
             review_state='published',
             sort_on='sortable_title')
         results = [result.getObject() for result in results]
@@ -111,6 +112,6 @@ class ListingCardsMixin():
         return results
 
 
-class ListingCards(ListingCardsMixin, grok.View):
+class ListingCards(ListingCardsMixin, dexterity.DisplayForm):
     grok.context(ICard)
     grok.require('zope2.View')

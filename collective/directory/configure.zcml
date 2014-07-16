@@ -6,6 +6,7 @@
     <include package="five.grok" />
     <include package="plone.app.dexterity" />
     <include package="collective.geo.bundle" />
+    <include package="collective.schedulefield" />
 
     <include package=".content" />
 

@@ -43,6 +43,7 @@ setup(name='collective.directory',
           'plone.api',
           'collective.geo.bundle',
           'collective.geo.behaviour',
+          'collective.schedulefield',
       ],
       extras_require={
           'test': [
@@ -50,4 +51,4 @@ setup(name='collective.directory',
           ]
       },
       entry_points={},
-)
+      )

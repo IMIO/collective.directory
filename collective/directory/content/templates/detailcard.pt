@@ -45,7 +45,7 @@
                tal:content="context/website" />
           </p>
 
-          <p tal:content="structure context/schedule" class="card-schedule" />
+          <p tal:content="structure view/w/schedule/render" class="card-schedule" />
 
           <p tal:content="structure context/description" class="card-description" />
 
