@@ -47,7 +47,7 @@
                    tal:content="card/website" />
               </p>
 
-              <p tal:content="structure card/schedule" class="card-schedule" />
+              <span tal:replace="structure python:view.schedule_render(card)" />
 
               <p tal:content="structure card/description" class="card-description" />
 

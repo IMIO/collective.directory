@@ -93,7 +93,7 @@ class DetailCard(dexterity.DisplayForm):
     grok.require('zope2.View')
 
 
-class ListingCardsMixin():
+class ListingCardsMixin(object):
 
     def getSubCards(self):
         portal_type = "collective.directory.card"
@@ -110,6 +110,11 @@ class ListingCardsMixin():
             results.remove(self.context)
 
         return results
+
+    def schedule_render(self, card):
+        card_display = dexterity.DisplayForm(card, self.request)
+        card_display.update()
+        return card_display.w.get('schedule').render()
 
 
 class ListingCards(ListingCardsMixin, dexterity.DisplayForm):
