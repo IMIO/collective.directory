@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<registry>
+    <records interface="collective.geo.settings.interfaces.IGeoFeatureStyle">
+        <value key="map_viewlet_position">plone.belowcontentbody</value>
+    </records>
+    <records interface="collective.geo.settings.interfaces.IGeoSettings">
+        <value key="latitude">50.45635</value>
+    </records>
+    <records interface="collective.geo.settings.interfaces.IGeoSettings">
+        <value key="longitude">4.70432250</value>
+    </records>
+    <records interface="collective.geo.settings.interfaces.IGeoSettings">
+        <value key="zoom">12</value>
+    </records>
+</registry>
