@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from five import grok
-from plone.directives import dexterity
 from plone.app.textfield import RichText
+from plone.directives import dexterity
 from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
 from zope import schema

@@ -21,4 +21,18 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <!-- Register the import step -->
+    <genericsetup:importStep
+        name="collective.directory"
+        title="collective.directory special import handlers"
+        description=""
+        handler="collective.directory.setuphandlers.setupVarious"
+        />
+
+    <utility component=".vocabulary.DirectoryVocabularyFactory"
+             name="collective.directory.vocabularies.directory" />
+
+    <utility component=".vocabulary.CategoryVocabularyFactory"
+             name="collective.directory.vocabularies.category" />
+
 </configure>
