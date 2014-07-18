@@ -7,35 +7,17 @@ from collective.geo.geographer.interfaces import IWriteGeoreferenced
 logger = logging.getLogger('collective.directory')
 
 
-def setupVarious(context):
+def installCore(context):
     if context.readDataFile('collective.directory-default.txt') is None:
         return
 
     logger.info('Installing')
     portal = context.getSite()
-
-    # Add catalog indexes
-    addCatalogIndexes(portal)
-
-
-def addCatalogIndexes(portal):
-    """
-    Method to add our wanted indexes to the portal_catalog.
-    We couldn't do it in the profile directly, see :
-        http://maurits.vanrees.org/weblog/archive/2009/12/catalog
-    """
     catalog = getToolByName(portal, 'portal_catalog')
-    indexes = catalog.indexes()
-    wanted = (('directory', 'KeywordIndex'), )
-    indexables = []
-    for name, meta_type in wanted:
-        if name not in indexes:
-            catalog.addIndex(name, meta_type)
-            indexables.append(name)
-            logger.info("Added %s for field %s.", meta_type, name)
-    if len(indexables) > 0:
-        logger.info("Indexing new indexes %s.", ', '.join(indexables))
-        catalog.manage_reindexIndex(ids=indexables)
+
+    # Reindex new indexes
+    catalog.manage_reindexIndex('directory')
+    catalog.manage_reindexIndex('category')
 
 
 def testSetup(context):

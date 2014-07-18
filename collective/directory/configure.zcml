@@ -10,24 +10,9 @@
 
     <include package=".content" />
 
+    <include file="profiles.zcml" />
+
     <i18n:registerTranslations directory="locales" />
-
-    <!-- Register an extension profile to make the product installable -->
-    <genericsetup:registerProfile
-        name="default"
-        title="collective.directory"
-        description="Allow creating Directory types"
-        directory="profiles/default"
-        provides="Products.GenericSetup.interfaces.EXTENSION"
-        />
-
-    <!-- Register the import step -->
-    <genericsetup:importStep
-        name="collective.directory"
-        title="collective.directory special import handlers"
-        description=""
-        handler="collective.directory.setuphandlers.setupVarious"
-        />
 
     <utility component=".vocabulary.DirectoryVocabularyFactory"
              name="collective.directory.vocabularies.directory" />
