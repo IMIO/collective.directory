@@ -32,6 +32,7 @@
   <property name="default_view">directory</property>
   <property name="view_methods">
    <element value="directory"/>
+   <element value="kml-openlayers"/>
   </property>
   <property name="default_view_fallback">False</property>
   <property name="add_permission">cmf.AddPortalContent</property>

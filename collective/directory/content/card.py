@@ -18,17 +18,8 @@ class ICard(model.Schema):
     A "Card", directories can contain "Category"s
     """
 
-    title = schema.TextLine(
-        title=_(u"Title"),
-    )
-
     subtitle = schema.TextLine(
         title=_(u"Subtitle"),
-        required=False,
-    )
-
-    description = schema.Text(
-        title=_(u"Summary"),
         required=False,
     )
 
