@@ -12,4 +12,12 @@
     <records interface="collective.geo.settings.interfaces.IGeoSettings">
         <value key="zoom">12</value>
     </records>
+    <records interface="collective.geo.settings.interfaces.IGeoFeatureStyle">
+        <value key="map_width">100%</value>
+    </records>
+    <records interface="collective.geo.settings.interfaces.IGeoFeatureStyle">
+        <value key="map_height">800px</value>
+    </records>
+
+
 </registry>

@@ -31,7 +31,7 @@ def testSetup(context):
             'v': ['collective.directory.card']
         }]
         map_collection.setQuery(query)
-        map_collection.setLayout('kml-openlayers')
+        #map_collection.setLayout('kml-openlayers')
 
 
 def make_contents(container):
@@ -81,4 +81,4 @@ def make_contents(container):
                 )
                 geo = IWriteGeoreferenced(card_container)
                 geo.setGeoInterface('Point', (card['lat'], card['lon']))
-                card_container.reindexObject(idxs=['zgeo_geometry'])
+                card_container.reindexObject(idxs=['zgeo_geometry', 'collective_geo_styles'])
