@@ -18,16 +18,15 @@
 
     <include package=".content" />
 
+    <include file="profiles.zcml" />
+
     <i18n:registerTranslations directory="locales" />
 
-    <!-- Register an extension profile to make the product installable -->
-    <genericsetup:registerProfile
-        name="default"
-        title="collective.directory"
-        description="Allow creating Directory types"
-        directory="profiles/default"
-        provides="Products.GenericSetup.interfaces.EXTENSION"
-        />
+    <utility component=".vocabulary.DirectoryVocabularyFactory"
+             name="collective.directory.vocabularies.directory" />
+
+    <utility component=".vocabulary.CategoryVocabularyFactory"
+             name="collective.directory.vocabularies.category" />
 
     <browser:resourceDirectory
         name="collective.directory"

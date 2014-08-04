@@ -1,6 +1,23 @@
 # -*- coding: utf-8 -*-
+import logging
+from Products.CMFCore.utils import getToolByName
 from plone import api
 from collective.geo.geographer.interfaces import IWriteGeoreferenced
+
+logger = logging.getLogger('collective.directory')
+
+
+def installCore(context):
+    if context.readDataFile('collective.directory-default.txt') is None:
+        return
+
+    logger.info('Installing')
+    portal = context.getSite()
+    catalog = getToolByName(portal, 'portal_catalog')
+
+    # Reindex new indexes
+    catalog.manage_reindexIndex('directory')
+    catalog.manage_reindexIndex('category')
 
 
 def testSetup(context):
