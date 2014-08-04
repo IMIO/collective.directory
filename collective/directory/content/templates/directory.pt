@@ -7,8 +7,29 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="collective.directory">
   <body>
-    <metal:main fill-slot="main">
-      <tal:main-macro metal:define-macro="main">Hello world</tal:main-macro>
+    <metal:main fill-slot="content-core">
+      <tal:main-macro metal:define-macro="content-core">
+ 
+
+            <metal:use use-macro="context/@@collectivegeoleaflet-macros/map-div" />
+            <metal:use use-macro="context/@@collectivegeoleaflet-macros/map-init-leaflet" />
+            <metal:use use-macro="context/@@collectivegeoleaflet-macros/map-search" />
+
+            <script type="text/javascript" 
+                    src="++resource++collective.directory/L.Control.Directory.js">
+            </script>
+
+            <div id="geojson_urls" 
+                tal:attributes="data-geojson_urls view/get_geojson_urls">
+            </div>
+
+            <script type="text/javascript" 
+                    src="++resource++collective.directory/collective_directory.js">
+            </script>
+
+
+
+       </tal:main-macro>
     </metal:main>
   </body>
 </html>
