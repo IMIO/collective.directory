@@ -21,6 +21,7 @@ class ICategory(model.Schema):
 
     description = schema.Text(
         title=_(u"Category summary"),
+        required=False,
     )
 
 

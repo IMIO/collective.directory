@@ -21,6 +21,7 @@ class IDirectory(model.Schema):
 
     description = schema.Text(
         title=_(u"Directory summary"),
+        required=False,
     )
 
 
