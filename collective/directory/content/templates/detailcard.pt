@@ -21,7 +21,7 @@
               tal:attributes="src thumbnail/url;
                               width thumbnail/width;
                               height thumbnail/height"
-              class="image-left" />
+              class="card-image" />
 
           <p tal:content="structure context/address" class="card-address" />
 
