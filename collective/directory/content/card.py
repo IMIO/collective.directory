@@ -4,16 +4,19 @@ from plone.app.textfield import RichText
 from plone.directives import dexterity
 from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
+from plone.app.dexterity.behaviors.metadata import IBasic
 from zope import schema
 
 from collective.directory import _
 from collective.schedulefield.schedule import Schedule
 
+from plone.autoform import directives as form
+
 
 grok.templatedir('templates')
 
 
-class ICard(model.Schema):
+class ICard(model.Schema, IBasic):
     """
     A "Card", directories can contain "Category"s
     """
@@ -72,6 +75,8 @@ class ICard(model.Schema):
         title=_(u"Photo"),
         required=False,
     )
+
+    form.order_before(description='content')
 
     content = RichText(
         title=_(u"Content"),
