@@ -96,14 +96,14 @@ class ListingCardsMixin(object):
         results = self.context.portal_catalog.searchResults(
             portal_type=portal_type,
             path={'query': '/'.join(self.context.getPhysicalPath())},
-            review_state='published',
             sort_on='sortable_title')
         results = [result.getObject() for result in results]
 
         # remove actual card because path get the actual too, not only the
         # containing objects
         if self.context.portal_type == portal_type:
-            results.remove(self.context)
+            if results.count(self.context) >= 1:
+                results.remove(self.context)
 
         return results
 
