@@ -11,8 +11,6 @@
       <tal:main-macro metal:define-macro="content-core">
 
         <div class="card-detail">
-          <h2 tal:content="structure context/title" class="card-title" />
-
           <h3 tal:content="structure context/subtitle" class="card-subtitle" />
 
           <img tal:define="scales context/@@images;
