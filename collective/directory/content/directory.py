@@ -41,6 +41,7 @@ class Directory(grok.View):
         brains = catalog(query_dict)
         for brain in brains:
             directory = {}
+            # XXX should not wake up object
             directory['name'] = brain.getObject().title
             directory['icon'] = ""
             query_dict = {}
