@@ -16,6 +16,7 @@ class CollectiveDirectoryPloneWithPackageLayer(PloneWithPackageLayer):
     """
 
     def setUpPloneSite(self, portal):
+        portal.portal_workflow.setDefaultChain("simple_publication_workflow")
         applyProfile(portal, 'collective.directory:testing')
 
 
