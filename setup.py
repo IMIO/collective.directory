@@ -41,7 +41,6 @@ setup(name='collective.directory',
           'plone.app.dexterity [grok]',
           # -*- Extra requirements: -*-
           'plone.api',
-          'collective.geo.kml',
           'collective.geo.leaflet',
           'collective.schedulefield',
       ],
