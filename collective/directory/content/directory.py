@@ -47,6 +47,7 @@ class Directory(grok.View):
             query_dict = {}
             query_dict['portal_type'] = 'collective.directory.category'
             query_dict['path'] = {'query': brain.getPath(), 'depth': 1}
+            query_dict['sort_on'] = 'sortable_title'
             directory['contents'] = []
             for brain in catalog(query_dict):
                 directory['contents'].append({
