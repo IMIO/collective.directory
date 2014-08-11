@@ -211,6 +211,13 @@ function onEachFeature(feature, layer) {
             '<h3>'+feature.properties.title+'</h3>'+
             '</a>'+
             '<p>'+feature.properties.description+'</p>');
+    layer.on('mouseover', function (e) {
+        this.openPopup();
+    });
+
+    layer.on('mouseout', function (e) {
+        this.closePopup()
+    });
 }
 
 function pointToLayer (feature, latlng) {
