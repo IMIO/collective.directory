@@ -216,7 +216,7 @@ function onEachFeature(feature, layer) {
     });
 
     layer.on('mouseout', function (e) {
-        this.closePopup()
+        //this.closePopup();
     });
 }
 
