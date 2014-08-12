@@ -48,7 +48,6 @@ def testSetup(context):
             'v': ['collective.directory.card']
         }]
         map_collection.setQuery(query)
-        #map_collection.setLayout('kml-openlayers')
 
 
 def make_contents(container):

@@ -24,7 +24,7 @@
             </div>
 
             <script type="text/javascript" 
-                    src="++resource++collective.directory/collective_directory.js">
+                    src="++resource++collective.directory/map_directory.js">
             </script>
 
 
