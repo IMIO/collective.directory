@@ -15,6 +15,8 @@ L.Control.Directory = L.Control.extend({
         this.jsonDirectories = geojsonlayers.length;
         this._createGeoJsonLayer(geojsonlayers);
         this.geojsonlayers = geojsonlayers;
+        this.selectalltext = "Tout sélectionner";
+        this.unselectalltext = "Tout désélectionner";
         //this._updateGeoJsonLayer();
     },
 
@@ -79,7 +81,7 @@ L.Control.Directory = L.Control.extend({
         L.DomUtil.addClass(this._container, 'leaflet-control-layers-expanded');
 
         var selectall = this._selectall = L.DomUtil.create('a', 'category-title', form);
-        selectall.innerHTML = "Unselect all";
+        selectall.innerHTML = this.unselectalltext;
         this.isselectall = false;
         L.DomEvent.on(selectall, 'click', this._selectAll, this);
 
@@ -232,10 +234,10 @@ L.Control.Directory = L.Control.extend({
             }
         }
         if (this.isselectall) {
-            this._selectall.innerHTML = "Unselect all";
+            this._selectall.innerHTML = this.unselectalltext;
             this.isselectall = false;
         } else if (!this.isselectall) {
-            this._selectall.innerHTML = "Select all";
+            this._selectall.innerHTML = this.selectalltext;
             this.isselectall = true;
         }
         this._handlingClick = false;
