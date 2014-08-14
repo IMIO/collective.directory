@@ -1,7 +1,7 @@
 L.Control.Directory = L.Control.extend({
     options: {
         collapsed: true,
-        position: 'topright',
+        position: 'topleft',
         autoZIndex: true
     },
 
@@ -66,17 +66,33 @@ L.Control.Directory = L.Control.extend({
         // makes this work on IE touch devices by stopping it from firing a mouseout event when the touch is released
         container.setAttribute('aria-haspopup', true);
 
-        L.DomEvent.on(container, 'click', L.DomEvent.stopPropagation);
+        if (!L.Browser.touch) {
+            L.DomEvent
+                .disableClickPropagation(container)
+                .disableScrollPropagation(container);
+        } else {
+            L.DomEvent.on(container, 'click', L.DomEvent.stopPropagation);
+        }
 
         var form = this._form = L.DomUtil.create('form', className + '-list');
 
         L.DomUtil.addClass(this._container, 'leaflet-control-layers-expanded');
 
+        var selectall = this._selectall = L.DomUtil.create('a', 'category-title', form);
+        selectall.innerHTML = "Unselect all";
+        this.isselectall = false;
+        L.DomEvent.on(selectall, 'click', this._selectAll, this);
+
+
+
+        //L.DomEvent.on(input, 'click', this._onInputClick, this);
+
+
         for (var i=0; i < this.jsonDirectories; i++) {
             name = this.geojsonlayers[i].name;
-            h2 = L.DomUtil.create('h3', 'category-title', form);
-            h2.innerHTML = name;
-            this._layersList[i] = h2;
+            h3 = L.DomUtil.create('h3', 'category-title', form);
+            h3.innerHTML = name;
+            this._layersList[i] = h3;
             this._layersList[i] = L.DomUtil.create('div', className + '-overlays', form);
             if (i < this.jsonDirectories-1){
                 this._separator = L.DomUtil.create('div', className + '-separator', form);
@@ -192,11 +208,38 @@ L.Control.Directory = L.Control.extend({
                 this._map.removeLayer(layer);
             }
         }
-
         this._handlingClick = false;
-
         //this._refocusOnMap();
     },
+
+    _selectAll: function() {
+        var inputs = this._form.getElementsByTagName('input'),
+            input, layer, hasLayer;
+
+        this._handlingClick = true;
+
+        for (var i = 0, len = inputs.length; i < len; i++) {
+            input = inputs[i];
+            layer = this._layers[input.layerId].layer;
+            hasLayer = this._map.hasLayer(layer);
+
+            if (this.isselectall) {
+                this._map.addLayer(layer);
+                input.checked = true;
+            }else if (!this.isselectall) {
+                this._map.removeLayer(layer);
+                input.checked = false;
+            }
+        }
+        if (this.isselectall) {
+            this._selectall.innerHTML = "Unselect all";
+            this.isselectall = false;
+        } else if (!this.isselectall) {
+            this._selectall.innerHTML = "Select all";
+            this.isselectall = true;
+        }
+        this._handlingClick = false;
+    }
 
 });
 
