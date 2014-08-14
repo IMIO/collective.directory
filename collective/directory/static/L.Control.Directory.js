@@ -86,16 +86,14 @@ L.Control.Directory = L.Control.extend({
         L.DomEvent.on(selectall, 'click', this._selectAll, this);
 
 
-
-        //L.DomEvent.on(input, 'click', this._onInputClick, this);
-
-
         for (var i=0; i < this.jsonDirectories; i++) {
             name = this.geojsonlayers[i].name;
-            h3 = L.DomUtil.create('h3', 'category-title', form);
+            var h3 = L.DomUtil.create('h3', 'category-title-'+i, form);
             h3.innerHTML = name;
+            h3.setAttribute('rel', className + '-overlays-'+i);
             this._layersList[i] = h3;
-            this._layersList[i] = L.DomUtil.create('div', className + '-overlays', form);
+            L.DomEvent.addListener(h3, 'click', this._toggleTitle, this);
+            this._layersList[i] = L.DomUtil.create('div', className + '-overlays-'+i, form);
             if (i < this.jsonDirectories-1){
                 this._separator = L.DomUtil.create('div', className + '-separator', form);
             }
@@ -241,9 +239,13 @@ L.Control.Directory = L.Control.extend({
             this.isselectall = true;
         }
         this._handlingClick = false;
-    }
+    },
 
+    _toggleTitle:  function(e) {
+        $('.'+e.currentTarget.getAttribute('rel')).toggle(200);
+    }
 });
+
 
 
 L.control.directory = function (geojsonlayers, options) {
