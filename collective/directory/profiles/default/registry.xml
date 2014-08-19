@@ -28,4 +28,7 @@
         <value key="group" i18n:translate="">Text</value>
     </records>
 
+    <records interface="collective.geo.settings.interfaces.IGeoFeatureStyle">
+        <value key="map_width">100%</value>
+    </records>
 </registry>
