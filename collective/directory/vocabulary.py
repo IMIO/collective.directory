@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-from binascii import b2a_qp
 from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 from zope.site.hooks import getSite
 
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.utils import safe_unicode
 
 
 class BasePortalTypeVocabulary(object):
