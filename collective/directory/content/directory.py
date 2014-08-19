@@ -33,7 +33,30 @@ class Directory(grok.View):
         super(Directory, self).__init__(context, request)
         self.geomap = geomap.GeoMap(context, request)
 
-    def get_geojson_urls(self):
+    def get_simple_directory_geojson_urls(self):
+        results = []
+        catalog = getToolByName(self.context, 'portal_catalog')
+        query_dict = {}
+        directory = {}
+        # XXX should not wake up object
+        directory['name'] = self.context.title
+        directory['icon'] = ""
+        query_dict = {}
+        query_dict['portal_type'] = 'collective.directory.category'
+        query_dict['path'] = {'query': "/".join(self.context.getPhysicalPath()), 'depth': 1}
+        query_dict['sort_on'] = 'sortable_title'
+        directory['contents'] = []
+        for brain in catalog(query_dict):
+            directory['contents'].append({
+                'name': brain.getObject().title,
+                'url': "{}/@@geo-json.json".format(brain.getURL()),
+                'icon': ''
+            })
+
+        results.append(directory)
+        return json.dumps(results)
+
+    def get_all_directories_geojson_urls(self):
         results = []
         catalog = getToolByName(self.context, 'portal_catalog')
         query_dict = {}

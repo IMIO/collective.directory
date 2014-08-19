@@ -20,7 +20,7 @@
             </script>
 
             <div id="geojson_urls" 
-                tal:attributes="data-geojson_urls view/get_geojson_urls">
+                tal:attributes="data-geojson_urls view/get_simple_directory_geojson_urls">
             </div>
 
             <script type="text/javascript" 
