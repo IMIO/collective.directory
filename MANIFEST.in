@@ -1,0 +1,8 @@
+include setup.py
+include *.rst
+exclude *.cfg
+exclude .travis.yml
+exclude bootstrap.py
+graft collective 
+recursive-include docs LICENSE.*
+global-exclude *.pyc
