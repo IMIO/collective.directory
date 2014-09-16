@@ -43,10 +43,6 @@ class TestCardIntegration(unittest.TestCase):
         c2 = c1['card2']
         self.assertTrue(ICard.providedBy(c2))
 
-        self.category.invokeFactory('Folder', 'folder1')
-        f1 = self.category['folder1']
-        f1.invokeFactory('collective.directory.card', 'card3')
-
     def test_disallowed_adding(self):
         # XXX I have to find the way to disallow adding 'card' into something
         # else that category childrens and subchildrens
