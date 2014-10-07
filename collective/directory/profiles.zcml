@@ -21,4 +21,13 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <genericsetup:upgradeStep
+        source="1"
+        destination="2"
+        title="Rename id for directory and category"
+        description="Used to prevent error on duplicate id in vocabulary"
+        profile="collective.directory:default"
+        handler=".upgrades.upgrade_1_to_2"
+        />
+
 </configure>
