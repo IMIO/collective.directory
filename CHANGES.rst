@@ -4,7 +4,8 @@ Changelog
 0.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add migration profile.
+  [bsuttor]
 
 
 0.1.1 (2014-10-07)
