@@ -30,4 +30,14 @@
         handler=".upgrades.upgrade_1_to_2"
         />
 
+    <genericsetup:registerProfile
+        name="migration"
+        title="collective.directory: migration from Products.directory"
+        directory="profiles/migration"
+        description="Migrate Collective Directory from Products.directory"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+ 
 </configure>
