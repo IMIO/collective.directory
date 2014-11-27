@@ -11,9 +11,15 @@ def migrate_from_products_directory(context):
     if context.readDataFile('collective.directory-migration.txt') is None:
         return
 
-    # setup = api.portal.get_tool(name='portal_setup')
-    # setup.runAllImportStepsFromProfile('profile-collective.directory:default')
     portal = context.getSite()
+
+    qi_tool = api.portal.get_tool(name='portal_quickinstaller')
+    pid = 'collective.directory'
+    installed = [p['id'] for p in qi_tool.listInstalledProducts()]
+    if pid not in installed:
+        setup = api.portal.get_tool(name='portal_setup')
+        setup.runAllImportStepsFromProfile('profile-collective.directory:default')
+
     if MIGRATE_CONTAINER not in portal.keys():
         migrate_container = api.content.create(
             type='Folder',
@@ -73,6 +79,7 @@ def create_card(category, card):
     else:
         logger.warn("{} has no coordinates.".format(new_card.id))
     ICoordinates(new_card).coordinates = coord
+    api.content.transition(obj=new_card, transition='publish_and_hide')
     logger.info("{} is migrated.".format(new_card.id))
 
 
@@ -97,12 +104,14 @@ def create_category(directory, categories_list, card):
     if category_name in directory.keys():
         return directory.get(category_name)
     else:
-        return api.content.create(
+        category = api.content.create(
             type='collective.directory.category',
             id=category_name,
             title=category_title,
             container=directory
         )
+        api.content.transition(obj=category, transition='publish_and_hide')
+        return category
 
 
 def get_categories(portal_directory):
