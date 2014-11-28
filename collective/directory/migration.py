@@ -68,11 +68,29 @@ def create_card(category, card):
         new_card.zip_code = int(card.zip)
     else:
         logger.warn("{} has no zip code.".format(new_card.id))
-    new_card.content = RichTextValue(unicode(card.presentation(), 'utf8'))
+
+    opening_hours = ""
+    if card.opening_hours:
+        opening_hours = card.opening_hours.getRaw()
+
+    content = "{0}<br />{1}".format(card.presentation(), opening_hours)
+    content = RichTextValue(unicode(content, 'utf8'))
+    new_card.content = content
     logo = card.getLogo()
     if logo:
         pass
-    # Todo: opening_hours:schedule, logo:photo,
+        # XXX TODO
+        # imageField.getRaw(news) == logo
+#         from collective.directory.content.card import ICard
+#         filename = logo.filename
+#         content_type = logo.getContentType()
+#         import pdb;pdb.set_trace()
+#         new_card.photo = ICard.photo._type(
+#             str(logo),
+#             contentType=content_type, filename=filename)
+
+#         new_card.photo = logo
+
     if card.Coordinates:
         lat, lon = card.Coordinates.split('|')
         coord = u"POINT({0} {1})".format(lon, lat)
