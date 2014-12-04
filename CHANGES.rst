@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.2 (unreleased)
+0.1.2 (2014-12-04)
 ------------------
 
 - Add migration profile.
