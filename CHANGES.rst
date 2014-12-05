@@ -4,7 +4,9 @@ Changelog
 0.1.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Update migration category. If a card has multi category, 
+  it choose first one and forgot others.
+  [bsuttor]
 
 
 0.1.2 (2014-12-04)
