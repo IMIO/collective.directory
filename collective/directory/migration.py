@@ -114,7 +114,7 @@ def create_directory(container, folder_name):
 
 def create_category(directory, categories_list, card):
     if len(card.category) != 1:
-        logger.error('Multi category: {}'.format(card.category))
+        logger.error('Multi category: {} for {}'.format(card.category, card.id))
     category_name = card.category[0]
     category_title = categories_list.get(category_name)
 
