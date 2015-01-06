@@ -1,30 +1,26 @@
 #!/usr/bin/make
-#
-all: run
-VERSION=`cat version.txt`
-BUILD_NUMBER='0'
+.PHONY: buildout cleanall test instance
 
-.PHONY: bootstrap
-bootstrap:
-	if ! test -f bin/python; then virtualenv-2.7 --no-site-packages .;fi
+bootstrap.py:
+	wget http://downloads.buildout.org/2/bootstrap.py
+
+bin/python:
+	virtualenv-2.7 .
+	touch $@
+
+bin/buildout: bootstrap.py buildout.cfg bin/python
 	./bin/python bootstrap.py
+	touch $@
 
-.PHONY: buildout
-buildout:
-	if ! test -f bin/buildout;then make bootstrap;fi
-	#if ! test -f var/filestorage/Data.fs;then make standard-config; else bin/buildout -Nt 7;fi
-	bin/buildout -Nt 7
+buildout: bin/buildout
+	./bin/buildout -t 7
 
-.PHONY: plone-site
-plone-site:
-	if ! test -f bin/buildout;then make bootstrap;fi
-	bin/buildout -Nt 7 -c plone-site.cfg
+test: buildout
+	./bin/test
 
-.PHONY: run
-run:
-	if ! test -f bin/instance;then make buildout;fi
-	bin/instance fg
+instance: buildout
+	./bin/instance fg
 
-.PHONY: cleanall
-cleanall:
-	rm -fr develop-eggs downloads eggs parts .installed.cfg lib include bin buildout.cfg .mr.developer.cfg
+
+cleanall: 
+	rm -rf bin develop-eggs downloads include lib parts .installed.cfg .mr.developer.cfg bootstrap.py
