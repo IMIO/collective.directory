@@ -56,4 +56,10 @@
     url_expr="string:${object_url}/edit" visible="True">
     <permission value="Modify portal content" />
   </action>
+  <action title="Import" action_id="collective_directory_import"
+    category="object" condition_expr=""
+    url_expr="string:${object_url}/collective_directory_import_view"
+    visible="True">
+    <permission value="Modify portal content" />
+  </action>
 </object>

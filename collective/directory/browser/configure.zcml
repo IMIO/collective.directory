@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.directory">
+
+    <!-- this is our custom view -->
+    <browser:page
+        name="collective_directory_import_view"
+        for="*"
+        permission="zope2.View"
+        class=".collective_directory_import_view.CollectiveDirectoryImportView"
+        />
+
+</configure>
