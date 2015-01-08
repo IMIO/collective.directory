@@ -43,6 +43,7 @@ setup(name='collective.directory',
           'plone.api',
           'collective.geo.leaflet',
           'collective.schedulefield',
+          'geopy',
       ],
       extras_require={
           'test': [
