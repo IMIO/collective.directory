@@ -59,7 +59,7 @@ def make_contents(container):
             },
             'Hockey': {
                 'Mornimont HC': {'lat': 4.7343225, 'lon': 50.45635089999998},
-                },
+            },
         },
         'Assosiations': {
             'Divers': {

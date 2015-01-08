@@ -24,3 +24,13 @@ def rename_ids(pt, context):
             logger.info('old id : {}, title : {}'.format(old_id, title))
             api.content.rename(obj=obj, new_id=title, safe_id=True)
             obj.reindexObject()
+
+
+def add_collective_directory_category_metadata(context):
+    catalog = getToolByName(context, 'portal_catalog')
+    portal_type = "collective.directory.card"
+    brains = catalog.searchResults(portal_type=portal_type)
+
+    for brain in brains:
+        obj = brain.getObject()
+        obj.reindexObject()

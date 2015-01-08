@@ -30,6 +30,15 @@
         handler=".upgrades.upgrade_1_to_2"
         />
 
+    <genericsetup:upgradeStep
+        source="2"
+        destination="3"
+        title="Add metadata for improving map geojson"
+        description="Category is now indexed from a Card"
+        profile="collective.directory:default"
+        handler=".upgrades.add_collective_directory_category_metadata"
+        />
+
     <genericsetup:registerProfile
         name="migration"
         title="collective.directory: migration from Products.directory"
