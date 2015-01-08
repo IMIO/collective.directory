@@ -15,6 +15,9 @@ bin/buildout: bootstrap.py buildout.cfg bin/python
 buildout: bin/buildout
 	./bin/buildout -t 7
 
+plone-site: bin/buildout
+	./bin/buildout -t 7 -c plone-site.cfg
+
 test: buildout
 	./bin/test
 
