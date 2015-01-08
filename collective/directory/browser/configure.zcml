@@ -11,4 +11,11 @@
         class=".collective_directory_import_view.CollectiveDirectoryImportForm"
         />
 
+    <browser:page
+      for="collective.directory.content.directory.IDirectory"
+      name="geo-json.json"
+      class=".jsonview.JsonDirectoryDocument"
+      layer = "collective.geo.json.interfaces.IGeoJsonLayer"
+      permission="zope2.View"
+      />
 </configure>

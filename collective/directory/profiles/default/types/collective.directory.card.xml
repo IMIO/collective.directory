@@ -21,7 +21,7 @@
   <property name="schema">collective.directory.content.card.ICard</property>
 
   <!-- class used for content items -->
-  <property name="klass">plone.dexterity.content.Container</property>
+  <property name="klass">collective.directory.content.card.Card</property>
 
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
