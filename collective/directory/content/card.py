@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from five import grok
+from plone.dexterity.content import Container
 from plone.app.textfield import RichText
 from plone.directives import dexterity
 from plone.namedfile.field import NamedBlobImage
@@ -82,6 +83,26 @@ class ICard(model.Schema, IBasic):
         title=_(u"Content"),
         required=False,
     )
+
+
+def get_first_parent_by_type(obj, portal_type):
+    parent = obj.__parent__
+    if parent.portal_type == portal_type:
+        return parent
+    elif parent.portal_type == 'Plone Site':
+        return None
+    else:
+        return get_first_parent_by_type(parent, portal_type)
+
+
+class Card(Container):
+    grok.implements(ICard)
+
+    def collective_directory_category(self):
+        parent = get_first_parent_by_type(self, 'collective.directory.category')
+        if not parent:
+            raise TypeError(_(u"Card must always be in a Category"))
+        return parent.id
 
 
 class DetailCard(dexterity.DisplayForm):

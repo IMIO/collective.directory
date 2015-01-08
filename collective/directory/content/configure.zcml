@@ -3,7 +3,6 @@
 
     <grok:grok package="collective.directory.content.directory" />
     <grok:grok package="collective.directory.content.category" />
-    <grok:grok package="collective.directory.content.card" />
 
     <adapter name="directory" factory=".indexers.directory" />
     <adapter name="category" factory=".indexers.category" />
