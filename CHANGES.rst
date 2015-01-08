@@ -4,7 +4,8 @@ Changelog
 0.1.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add import from csv tab for a directory.
+  [bsuttor]
 
 
 0.1.3 (2014-12-05)
