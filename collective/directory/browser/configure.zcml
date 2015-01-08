@@ -8,7 +8,7 @@
         name="collective_directory_import_view"
         for="*"
         permission="zope2.View"
-        class=".collective_directory_import_view.CollectiveDirectoryImportView"
+        class=".collective_directory_import_view.CollectiveDirectoryImportForm"
         />
 
 </configure>
