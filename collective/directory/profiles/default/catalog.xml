@@ -6,5 +6,5 @@
     <index name="category" meta_type="FieldIndex">
         <indexed_attr value="category"/>
     </index>
-    <column value="collective_directory_category" />
+    <column value="collective_directory_category"/>
 </object>

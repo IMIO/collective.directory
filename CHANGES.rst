@@ -4,7 +4,8 @@ Changelog
 0.1.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Imporve upgrade step with class change.
+  [bsuttor]
 
 
 0.1.4 (2015-01-14)

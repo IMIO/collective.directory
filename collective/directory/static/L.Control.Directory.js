@@ -13,7 +13,7 @@ L.Control.Directory = L.Control.Layers.extend({
         this._directory_title = directory_title;
         this.selectalltext = "Tout sélectionner";
         this.unselectalltext = "Tout désélectionner";
-        this._markers = markers;
+        //this._markers = markers;
         for (i in overlays) {
             this._addLayer(overlays[i], i, true);
         }

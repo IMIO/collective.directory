@@ -27,10 +27,15 @@ def rename_ids(pt, context):
 
 
 def add_collective_directory_category_metadata(context):
+    setup = getToolByName(context, 'portal_setup')
+    setup.runAllImportStepsFromProfile('profile-collective.directory:default')
     catalog = getToolByName(context, 'portal_catalog')
     portal_type = "collective.directory.card"
     brains = catalog.searchResults(portal_type=portal_type)
 
     for brain in brains:
         obj = brain.getObject()
+        from collective.directory.content.card import Card
+        obj.__class__ = Card
         obj.reindexObject()
+    logger.info("{} {} updated".format(len(brains), portal_type))
