@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.4 (unreleased)
+0.1.4 (2015-01-14)
 ------------------
 
 - Add import from csv tab for a directory.
