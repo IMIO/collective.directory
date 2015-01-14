@@ -7,6 +7,9 @@ Changelog
 - Add import from csv tab for a directory.
   [bsuttor]
 
+- Improve creation of geojson leaflet objects.
+  [bsuttor]
+
 
 0.1.3 (2014-12-05)
 ------------------
