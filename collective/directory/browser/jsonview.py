@@ -5,12 +5,19 @@ except:
     from pygeoif.geometry import as_shape as asShape
 
 import geojson
+import json
 from collective.geo.json.browser.jsonview import JsonFolderDocument
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class JsonDirectoryDocument(JsonFolderDocument):
 
+    index = ViewPageTemplateFile("jsonview.pt")
+
     def __call__(self):
+        return self.index()
+
+    def get_geojsons(self):
         json_result = []
         for brain in self.get_brain():
             if brain.zgeo_geometry:
@@ -38,8 +45,25 @@ class JsonDirectoryDocument(JsonFolderDocument):
                             }
                         )
                     )
+        json_list = arrange_json_by_category(json_result)
+        geojson_list = []
+        for index, value in json_list.items():
+            feature_collection = {}
+            feature_collection['geojson'] = geojson.dumps(geojson.FeatureCollection(value))
+            feature_collection['title'] = self.context[index].title
+            #geojson_list.append(json.loads(geojson.dumps(feature_collection)))
+            geojson_list.append(feature_collection)
         self.request.RESPONSE.setHeader('Content-Type',
                                         'application/json; charset=utf-8')
-        feature_collection = geojson.FeatureCollection(json_result)
-        feature_collection.update({'title': self.context.title})
-        return geojson.dumps(feature_collection)
+        return geojson_list
+
+
+def arrange_json_by_category(json_result):
+    json_dict = {}
+    for result in json_result:
+        value = []
+        if result['properties']['category'] in json_dict.keys():
+            value = json_dict[result['properties']['category']]
+        value.append(result)
+        json_dict[result['properties']['category']] = value
+    return json_dict
