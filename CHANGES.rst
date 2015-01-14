@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.5 (unreleased)
+0.1.5 (2015-01-14)
 ------------------
 
 - Imporve upgrade step with class change.
