@@ -19,9 +19,16 @@
                     src="++resource++collective.directory/L.Control.Directory.js">
             </script>
 
-            <div id="geojson_urls"
-                tal:attributes="data-geojson_urls view/get_simple_directory_geojson_urls">
+            <div id="directory_title"
+                tal:attributes="data-directory_title context/title">
             </div>
+
+            <!--div id="geojsons_url"
+                tal:attributes="data-geojsons_url view/get_directory_geojsons_url">
+            </div-->
+            <script type="text/javascript"
+                    tal:attributes="src string:${context/absolute_url}/@@geojsons.js">
+            </script>
 
             <script type="text/javascript"
                     src="++resource++collective.directory/map_directory.js">

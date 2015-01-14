@@ -33,8 +33,8 @@ class Directory(grok.View):
         super(Directory, self).__init__(context, request)
         self.geomap = geomap.GeoMap(context, request)
 
-    def get_directory_geojson_url(self):
-        return "{}/@@geo-json.json".format(self.url)
+    def get_directory_geojsons_url(self):
+        return "{}/@@geo-json.json".format(self.context.absolute_url())
 
     def get_simple_directory_geojson_urls(self):
         results = []
