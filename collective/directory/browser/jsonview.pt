@@ -3,11 +3,11 @@ var geojsons = {};
 <tal:block tal:define='geojsons view/get_geojsons'>
 <tal:loop tal:repeat='geojson geojsons'>
 data = <tal:name tal:content='geojson/geojson' />;
-geojsons['<tal:name tal:content='geojson/title' />'] = L.geoJson(data, {
+geojsons["<tal:name tal:content='geojson/title' />"] = L.geoJson(data, {
             onEachFeature: onEachFeature,
             pointToLayer: pointToLayer
         });
-map.addLayer(geojsons['<tal:name tal:content='geojson/title' />']);
+map.addLayer(geojsons["<tal:name tal:content='geojson/title' />"]);
 </tal:loop>
 </tal:block>
 
