@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.6 (unreleased)
+0.1.6 (2015-01-15)
 ------------------
 
 - Order map and force width to 100% on install.
