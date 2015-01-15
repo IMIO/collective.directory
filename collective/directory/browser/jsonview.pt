@@ -1,15 +1,19 @@
+var data = {};
 var geojsons = {};
-//var markers = new L.MarkerClusterGroup();
+var markers = new L.MarkerClusterGroup();
+
 <tal:block tal:define='geojsons view/get_geojsons'>
 <tal:loop tal:repeat='geojson geojsons'>
-data = <tal:name tal:content='geojson/geojson' />;
-geojsons["<tal:name tal:content='geojson/title' />"] = L.geoJson(data, {
+data["<tal:name tal:content='geojson/title' />"] = <tal:name tal:content='geojson/geojson' />;
+geojsons["<tal:name tal:content='geojson/title' />"] = L.geoJson("", {
             onEachFeature: onEachFeature,
             pointToLayer: pointToLayer
-        });
-map.addLayer(geojsons["<tal:name tal:content='geojson/title' />"]);
+        }).addTo(map);
+
+//map.addLayer(geojsons["<tal:name tal:content='geojson/title' />"]);
 </tal:loop>
 </tal:block>
+
 
 function onEachFeature(feature, layer) {
     layer.bindPopup(
@@ -35,3 +39,4 @@ function pointToLayer (feature, latlng) {
     var customIcon = new CustomIcon();
     return L.marker(latlng, {icon: customIcon});
 }
+

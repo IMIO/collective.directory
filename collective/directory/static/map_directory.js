@@ -1,26 +1,44 @@
 url = $('#geojsons_url').data('geojsons_url');
 directory_title = $('#directory_title').data('directory_title');
 
+var categories_meta = {},
+    overlayMaps = {},
+    markers_category = {},
+    leaflet_meta = {};
 
-//var geojson =  {};
-/*$.getJSON(url, function(data) {
-    var geojsons = data;
-    for (var g in geojsons) {
-        geojson_data = geojsons[g];
-        name = geojson_data.title;
-        geojson[name] = L.geoJson(geojson_data, {
-            onEachFeature: onEachFeature,
-            pointToLayer: pointToLayer
-        });
-        markers.addLayer(geojson[name]).addTo(map);
-        //map.addLayer(markers);
+for(var index in geojsons) {
+    markers_category[index] = [];
+    overlayMaps[index] = geojsons[index];
+}
+
+for(var index in geojsons) {
+    markers.addLayer(geojsons[index]);
+    geojsons[index].addData(data[index])
+    markers_category[index].push(geojsons[index]);
+}
+
+var control = L.control.directory(geojsons, directory_title);
+/*var control = L.control.layers(null, overlayMaps, {
+        collapsed: false,
+        position: 'topleft'
     }
-    //map.addLayer(markers);
-    var lcontrol = L.control.layers(null, geojson, {collapsed:false, position: 'topleft'});
-    map.addControl(lcontrol);
-});*/
+);*/
 
-//map.addLayer(markers);
-//emptyLayers = L.layerGroup([]);
-var lcontrol = L.control.directory(geojsons, directory_title);
-map.addControl(lcontrol);
+map.addControl(control);
+/*map.addLayer(markers);
+
+for (var row in control._layers) {
+    leaflet_meta[L.Util.stamp(control._layers[row].layer)] = control._layers[row].name;
+}
+
+for (var row in control._layers) {
+    leaflet_meta[L.Util.stamp(control._layers[row].layer)] = control._layers[row].name;
+}
+map.on('overlayadd', function (a) {
+    var category_index = leaflet_meta[L.Util.stamp(a.layer)];
+    markers.addLayers(markers_category[category_index]);
+});
+map.on('overlayremove', function (a) {
+    var category_index = leaflet_meta[L.Util.stamp(a.layer)];
+    markers.removeLayers(markers_category[category_index]);
+});*/
