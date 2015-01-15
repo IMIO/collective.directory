@@ -4,7 +4,11 @@ Changelog
 0.1.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Order map and force width to 100% on install.
+  [bsuttor]
+
+- Fix: card not imported into zcml.
+  [bsuttor]
 
 
 0.1.5 (2015-01-14)
@@ -27,7 +31,7 @@ Changelog
 0.1.3 (2014-12-05)
 ------------------
 
-- Update migration category. If a card has multi category, 
+- Update migration category. If a card has multi category,
   it choose first one and forgot others.
   [bsuttor]
 
