@@ -4,7 +4,8 @@ Changelog
 0.1.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Try to add markercluster (Leaflet), first step.
+  [bsuttor]
 
 
 0.1.6 (2015-01-15)
