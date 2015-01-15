@@ -5,6 +5,11 @@ import logging
 logger = logging.getLogger('collective.directory.upgrades')
 
 
+def update_profile(context):
+    setup = getToolByName(context, 'portal_setup')
+    setup.runAllImportStepsFromProfile('profile-collective.directory:default')
+
+
 def upgrade_1_to_2(context):
     # setup = getToolByName(context, 'portal_setup')
     # setup.runAllImportStepsFromProfile('profile-collective.directory:default')
@@ -27,8 +32,7 @@ def rename_ids(pt, context):
 
 
 def add_collective_directory_category_metadata(context):
-    setup = getToolByName(context, 'portal_setup')
-    setup.runAllImportStepsFromProfile('profile-collective.directory:default')
+    update_profile(context)
     catalog = getToolByName(context, 'portal_catalog')
     portal_type = "collective.directory.card"
     brains = catalog.searchResults(portal_type=portal_type)
@@ -39,3 +43,7 @@ def add_collective_directory_category_metadata(context):
         obj.__class__ = Card
         obj.reindexObject()
     logger.info("{} {} updated".format(len(brains), portal_type))
+
+
+def update_3_to_4(context):
+    update_profile(context)

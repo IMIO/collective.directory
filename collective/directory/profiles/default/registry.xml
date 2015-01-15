@@ -31,16 +31,16 @@
     <records interface="collective.geo.settings.interfaces.IGeoFeatureStyle">
         <value key="map_width">100%</value>
     </records>
-
-    <!--record interface="Products.ResourceRegistries.interfaces.settings.IResourceRegistriesSettings" field="resourceBundlesForThemes">
-        <value purge="false">
-            <element key="(default)" purge="false">
-                <element>leaflet.minimap</element>
-                <element>leaflet.geosearch</element>
-                <element>leaflet.geosearch.openstreetmap</element>
-                <element>leaflet.markercluster</element>
-            </element>
+    <records interface="collective.geo.settings.interfaces.IGeoSettings">
+        <value key="default_layers" purge="true">
+            <element>osm</element>
+            <element>google_map</element>
+            <element>google_ter</element>
+            <element>google_hyb</element>
+            <element>google_sat</element>
         </value>
-    </record-->
-
+    </records>
+    <records interface="collective.geo.settings.interfaces.IGeoFeatureStyle">
+        <value key="map_width">100%</value>
+    </records>
 </registry>

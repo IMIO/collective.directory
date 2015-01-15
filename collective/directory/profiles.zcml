@@ -21,6 +21,15 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <genericsetup:registerProfile
+        name="migration"
+        title="collective.directory: migration from Products.directory"
+        directory="profiles/migration"
+        description="Migrate Collective Directory from Products.directory"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
     <genericsetup:upgradeStep
         source="1"
         destination="2"
@@ -39,13 +48,14 @@
         handler=".upgrades.add_collective_directory_category_metadata"
         />
 
-    <genericsetup:registerProfile
-        name="migration"
-        title="collective.directory: migration from Products.directory"
-        directory="profiles/migration"
-        description="Migrate Collective Directory from Products.directory"
-        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        provides="Products.GenericSetup.interfaces.EXTENSION"
+    <genericsetup:upgradeStep
+        source="3"
+        destination="4"
+        title="Order map and force width to 100% on install."
+        description="Update generic setup"
+        profile="collective.directory:default"
+        handler=".upgrades.update_3_to_4"
         />
+
 
 </configure>
