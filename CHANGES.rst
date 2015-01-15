@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.7 (unreleased)
+0.1.7 (2015-01-15)
 ------------------
 
 - Try to add markercluster (Leaflet), first step.
