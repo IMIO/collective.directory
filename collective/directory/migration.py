@@ -30,6 +30,8 @@ def migrate_from_products_directory(context):
     query = {}
 
     portal_directory = portal.get('portal_directory')
+    if not portal_directory:
+        return
     directories = portal_directory.keys()
     categories = get_categories(portal_directory)
 
