@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.8 (unreleased)
+0.1.8 (2015-01-20)
 ------------------
 
 - Check if portal_directory exists.
