@@ -4,7 +4,8 @@ Changelog
 0.1.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Do not use geojson for directory view. Use marker and layerGroup instead
+  [bsuttor]
 
 
 0.1.8 (2015-01-20)

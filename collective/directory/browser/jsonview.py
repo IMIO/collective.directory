@@ -1,69 +1,57 @@
 # -*- coding: utf-8 -*-
-try:
-    from shapely.geometry import asShape
-except:
-    from pygeoif.geometry import as_shape as asShape
-
-import geojson
+from Products.Five import BrowserView
 import json
-from collective.geo.json.browser.jsonview import JsonFolderDocument
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from collective.geo.leaflet.utils import get_marker_image
+import logging
+from Products.CMFCore.utils import getToolByName
+logger = logging.getLogger('collective.directory.brower.jsonview')
 
 
-class JsonDirectoryDocument(JsonFolderDocument):
+class JsonDirectory(BrowserView):
 
-    index = ViewPageTemplateFile("jsonview.pt")
+    # index = ViewPageTemplateFile("jsonview.pt")
+    categories = []
 
     def __call__(self):
-        return self.index()
+        self.request.RESPONSE.setHeader(
+            'Content-Type',
+            'application/javascript; charset=utf-8')
+        return self.get_categories()
 
-    def get_geojsons(self):
-        json_result = []
+    @property
+    def portal_catalog(self):
+        return getToolByName(self.context, 'portal_catalog')
+
+    def get_brain(self):
+        querydict = {}
+        querydict['path'] = {'query': '/'.join(self.context.getPhysicalPath())}
+        return self.portal_catalog(querydict)
+
+    def get_categories(self):
+        categories = {}
         for brain in self.get_brain():
             if brain.zgeo_geometry:
-                self.styles = brain.collective_geo_styles
+                marker = {}
+                cat = brain.collective_directory_category
+                if not cat:
+                    obj = brain.getObject()
+                    cat = obj.aq_parent.id
+                    logger.info("Obj: {0} not good for performance, start collective.directory upgradesteps 2".format(obj.id))
                 geom = {'type': brain.zgeo_geometry['type'],
                         'coordinates': brain.zgeo_geometry['coordinates']}
-                if geom['coordinates']:
-                    if geom['type']:
-                        classes = geom['type'].lower() + ' '
-                    else:
-                        classes = ''
-                    classes += brain.getPath().split('/')[-2].replace('.', '-')
-                    json_result.append(
-                        geojson.Feature(
-                            id=brain.id.replace('.', '-'),
-                            geometry=asShape(geom),
-                            style=self._get_style(geom),
-                            properties={
-                                "title": brain.Title,
-                                "description": brain.Description,
-                                "category": brain.collective_directory_category,
-                                "style": self._get_style(geom),
-                                "url": brain.getURL(),
-                                "classes": classes,
-                            }
-                        )
-                    )
-        json_list = arrange_json_by_category(json_result)
-        geojson_list = []
-        for index, value in json_list.items():
-            feature_collection = {}
-            feature_collection['geojson'] = geojson.dumps(geojson.FeatureCollection(value))
-            feature_collection['title'] = self.context[index].title
-            #geojson_list.append(json.loads(geojson.dumps(feature_collection)))
-            geojson_list.append(feature_collection)
-        self.request.RESPONSE.setHeader('Content-Type',
-                                        'application/json; charset=utf-8')
-        return geojson_list
-
-
-def arrange_json_by_category(json_result):
-    json_dict = {}
-    for result in json_result:
-        value = []
-        if result['properties']['category'] in json_dict.keys():
-            value = json_dict[result['properties']['category']]
-        value.append(result)
-        json_dict[result['properties']['category']] = value
-    return json_dict
+                marker['geom'] = geom
+                marker['style'] = brain.collective_geo_styles
+                marker['title'] = brain.Title
+                marker['description'] = brain.Description
+                marker['category'] = cat
+                marker['url'] = brain.getURL()
+                if cat not in categories.keys():
+                    categories[cat] = {}
+                    categories[cat]['title'] = self.context[cat].title
+                    img_url = get_marker_image(
+                        self.context,
+                        marker['style'].get('marker_image'))
+                    categories[cat]['img_url'] = img_url
+                    categories[cat]['markers'] = []
+                categories[cat]['markers'].append(marker)
+        return "var data_categories = {0}".format(json.dumps(categories))

@@ -13,8 +13,8 @@
 
     <browser:page
       for="collective.directory.content.directory.IDirectory"
-      name="geojsons.js"
-      class=".jsonview.JsonDirectoryDocument"
+      name="json.js"
+      class=".jsonview.JsonDirectory"
       layer = "collective.geo.json.interfaces.IGeoJsonLayer"
       permission="zope2.View"
       />

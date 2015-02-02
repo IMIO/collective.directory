@@ -27,7 +27,7 @@
                 tal:attributes="data-geojsons_url view/get_directory_geojsons_url">
             </div-->
             <script type="text/javascript"
-                    tal:attributes="src string:${context/absolute_url}/@@geojsons.js">
+                    tal:attributes="src string:${context/absolute_url}/@@json.js">
             </script>
 
             <script type="text/javascript"
