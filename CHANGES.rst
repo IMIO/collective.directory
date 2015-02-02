@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.9 (unreleased)
+0.2.0 (2015-02-02)
 ------------------
 
 - Do not use geojson for directory view. Use marker and layerGroup instead
