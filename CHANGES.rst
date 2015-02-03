@@ -4,7 +4,11 @@ Changelog
 0.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Sort category by id in legend.
+  [bsuttor]
+
+- Fix height and overflow for category legend
+  [bsuttor]
 
 
 0.2.0 (2015-02-02)
