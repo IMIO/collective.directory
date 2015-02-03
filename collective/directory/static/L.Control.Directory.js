@@ -82,7 +82,7 @@ L.Control.Directory = L.Control.Layers.extend({
         mapHeight = parseInt($('#map').css('height'), 10);
         zoomHeight = parseInt($('.leaflet-control-zoom').css('height'), 10);
         formHeight = mapHeight-zoomHeight-80; // 80 is border and padding
-        this._overlaysList.style.height = formHeight+'px';
+        this._overlaysList.style.max-height = formHeight+'px';
 
         container.appendChild(form);
     },
