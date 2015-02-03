@@ -79,6 +79,11 @@ L.Control.Directory = L.Control.Layers.extend({
         L.DomEvent.addListener(h3, 'click', this._toggleTitle, this);
         this._overlaysList = L.DomUtil.create('div', className + '-overlays', form);
 
+        mapHeight = parseInt($('#map').css('height'), 10);
+        zoomHeight = parseInt($('.leaflet-control-zoom').css('height'), 10);
+        formHeight = mapHeight-zoomHeight-80; // 80 is border and padding
+        this._overlaysList.style.height = formHeight+'px';
+
         container.appendChild(form);
     },
 
