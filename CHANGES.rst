@@ -4,7 +4,8 @@ Changelog
 0.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Use maxheight instead of height in control directory.
+  [bsuttor]
 
 
 0.2.1 (2015-02-03)
