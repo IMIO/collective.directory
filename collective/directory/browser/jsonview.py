@@ -54,4 +54,4 @@ class JsonDirectory(BrowserView):
                     categories[cat]['img_url'] = img_url
                     categories[cat]['markers'] = []
                 categories[cat]['markers'].append(marker)
-        return "var data_categories = {0}".format(json.dumps(categories))
+        return "var data_categories = {0}".format(json.dumps(categories, sort_keys=True))

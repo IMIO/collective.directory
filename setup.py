@@ -51,4 +51,4 @@ setup(name='collective.directory',
           ]
       },
       entry_points={},
-      )
+)
