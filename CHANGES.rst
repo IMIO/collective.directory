@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2.3 (unreleased)
+0.2.3 (2015-02-10)
 ------------------
 
 - Fix js error, use maxHeight instead of maxheight
