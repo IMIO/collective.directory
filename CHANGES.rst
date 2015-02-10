@@ -4,7 +4,8 @@ Changelog
 0.2.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix js error, use maxHeight instead of maxheight
+  [bsuttor]
 
 
 0.2.2 (2015-02-03)
