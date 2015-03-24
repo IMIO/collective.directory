@@ -35,14 +35,14 @@ class JsonDirectory(BrowserView):
             if brain.zgeo_geometry:
                 marker = {}
                 cat = brain.collective_directory_category
-                isaCard = 'collective.direcotry.category'
+                isCategory = 'collective.direcotry.category'
                 if not cat:
                     obj = brain.getObject()
                     cat = obj.aq_parent.id
-                    # Be Careful : If a card is in another card, obj.aq_parent.portal_type is a card so, cat ID is not a key in self.context
-                    isaCard = obj.aq_parent.portal_type
+                    # Be Careful ... CAN BE A CARD : If a card is in another card, obj.aq_parent.portal_type is a card so, cat ID is not a key in self.context
+                    isCategory = obj.aq_parent.portal_type
                     logger.info("Obj: {0} not good for performance, start collective.directory upgradesteps 2".format(obj.id))
-                if isaCard == 'collective.directory.category':
+                if isCategory == 'collective.directory.category':
                     geom = {'type': brain.zgeo_geometry['type'],
                             'coordinates': brain.zgeo_geometry['coordinates']}
                     marker['geom'] = geom
