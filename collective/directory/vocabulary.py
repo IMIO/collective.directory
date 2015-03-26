@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
+from plone import api
 from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
-from zope.site.hooks import getSite
-
-from Products.CMFCore.utils import getToolByName
 
 
 class BasePortalTypeVocabulary(object):
@@ -13,12 +11,11 @@ class BasePortalTypeVocabulary(object):
     portal_type = ''
 
     def __call__(self, context, query=None):
-        site = getSite()
-        self.catalog = getToolByName(site, "portal_catalog", None)
-        if self.catalog is None:
+        catalog = api.portal.get_tool('portal_catalog')
+        if catalog is None:
             return SimpleVocabulary([])
 
-        brains = self.catalog.searchResults(portal_type=self.portal_type)
+        brains = catalog.searchResults(portal_type=self.portal_type)
         items = []
         for brain in brains:
             obj = brain.getObject()
