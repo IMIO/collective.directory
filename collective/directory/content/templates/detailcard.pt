@@ -41,7 +41,7 @@
 
             <p class="card-website">
               <a tal:attributes="href context/website"
-                 tal:content="context/website" />
+                 tal:content="context/website" target="_blank" />
             </p>
 
             <p tal:content="structure context/description" class="card-description" />
