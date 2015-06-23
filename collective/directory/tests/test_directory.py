@@ -4,6 +4,7 @@ import unittest
 
 from zope.component import createObject
 from zope.component import queryUtility
+from zope.interface import alsoProvides
 
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import setRoles
@@ -12,6 +13,9 @@ from plone.dexterity.interfaces import IDexterityFTI
 
 from collective.directory.content.directory import IDirectory
 from collective.directory.testing import COLLECTIVE_DIRECTORY_INTEGRATION_TESTING
+
+from collective.geo.geographer.interfaces import IGeoreferenceable
+from collective.geo.geographer.interfaces import IWriteGeoreferenced
 
 
 class TestDirectoryIntegration(unittest.TestCase):
@@ -51,6 +55,56 @@ class TestDirectoryIntegration(unittest.TestCase):
         d1 = self.folder['directory1']
         view = d1.restrictedTraverse('@@directory')
         self.assertNotEquals(None, view)
+
+    def test_jsonview(self):
+        self.folder.invokeFactory('collective.directory.directory', 'directory1')
+        directory1 = self.folder.get('directory1')
+        directory1.invokeFactory('collective.directory.category', 'category1')
+        category1 = directory1.get('category1')
+        category1.invokeFactory('collective.directory.card', 'card1')
+        category1.invokeFactory('collective.directory.card', 'card2')
+        card1 = category1.get('card1')
+        card2 = category1.get('card2')
+
+        alsoProvides(card1, IGeoreferenceable)
+        alsoProvides(card2, IGeoreferenceable)
+        geo1 = IWriteGeoreferenced(card1)
+        geo2 = IWriteGeoreferenced(card2)
+
+        geo1.setGeoInterface('Point', (5.583, 50.633))
+        geo2.setGeoInterface('Point', (5.593, 50.643))
+        card1.reindexObject(idxs=['zgeo_geometry', 'collective_geo_styles'])
+        card2.reindexObject(idxs=['zgeo_geometry', 'collective_geo_styles'])
+
+        d1 = self.folder['directory1']
+        view = d1.restrictedTraverse('@@json.js')
+        js = view.get_categories()
+        self.assertIn('"coordinates": [5.583, 50.633]', js)
+
+    def test_jsonview_card_in_card(self):
+        self.folder.invokeFactory('collective.directory.directory', 'directory1')
+        directory1 = self.folder.get('directory1')
+        directory1.invokeFactory('collective.directory.category', 'category1')
+        category1 = directory1.get('category1')
+        category1.invokeFactory('collective.directory.card', 'card1')
+        card1 = category1.get('card1')
+        card1.invokeFactory('collective.directory.card', 'card2')
+        card2 = card1.get('card2')
+
+        alsoProvides(card1, IGeoreferenceable)
+        alsoProvides(card2, IGeoreferenceable)
+        geo1 = IWriteGeoreferenced(card1)
+        geo2 = IWriteGeoreferenced(card2)
+
+        geo1.setGeoInterface('Point', (5.583, 50.633))
+        geo2.setGeoInterface('Point', (5.593, 50.643))
+        card1.reindexObject(idxs=['zgeo_geometry', 'collective_geo_styles'])
+        card2.reindexObject(idxs=['zgeo_geometry', 'collective_geo_styles'])
+
+        d1 = self.folder['directory1']
+        view = d1.restrictedTraverse('@@json.js')
+        js = view.get_categories()
+        self.assertIn('"coordinates": [5.593, 50.643]', js)
 
 
 def test_suite():
