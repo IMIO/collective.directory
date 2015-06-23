@@ -4,6 +4,9 @@ Changelog
 0.2.4 (unreleased)
 ------------------
 
+- Fix card in card are now return into json view.
+  [bsuttor]
+
 - Open website link into a new page.
   [bsuttor]
 
