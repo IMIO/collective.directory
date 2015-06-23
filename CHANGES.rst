@@ -4,7 +4,8 @@ Changelog
 0.2.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Open website link into a new page.
+  [bsuttor]
 
 
 0.2.3 (2015-02-10)
