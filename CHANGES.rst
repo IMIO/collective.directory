@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2.4 (unreleased)
+0.2.4 (2015-07-07)
 ------------------
 
 - Correct a css class for email in detailcard.pt
