@@ -4,6 +4,8 @@ Changelog
 0.2.4 (unreleased)
 ------------------
 
+- Correct a css class for email in detailcard.pt
+
 - Fix card in card are now return into json view.
   [bsuttor]
 
