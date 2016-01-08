@@ -4,21 +4,24 @@ Changelog
 0.2.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add translation for all content types.
+  [bsuttor]
 
 
 0.2.6 (2016-01-08)
 ------------------
 
-- Nothing changed yet.
+- Bad release.
 
 
 0.2.5 (2016-01-08)
 ------------------
 
 - Add new view to set Geolocation to each Cards in a directory.
-- Change zip_code schema from int to string.
+  [boulch]
 
+- Change zip_code schema from int to string.
+  [boulch]
 
 0.2.4 (2015-07-07)
 ------------------
