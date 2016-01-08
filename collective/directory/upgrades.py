@@ -47,3 +47,8 @@ def add_collective_directory_category_metadata(context):
 
 def update_3_to_4(context):
     update_profile(context)
+
+
+def set_translatable(context):
+    setup = getToolByName(context, 'portal_setup')
+    setup.runAllImportStepsFromProfile('profile-collective.directory:default')

@@ -57,5 +57,13 @@
         handler=".upgrades.update_3_to_4"
         />
 
+    <genericsetup:upgradeStep
+        source="4"
+        destination="5"
+        title="Set translatable"
+        description="Set all content types translatable."
+        profile="collective.directory:default"
+        handler=".upgrades.set_translatable"
+        />
 
 </configure>
