@@ -52,7 +52,7 @@ You can import card from a csv file. This csv file should contains header :
         <li>email</li>
         <li>website</li>
     </ul>
-Other column will be added into content.
+Other column will be added into content. The delimieter should be ";" and not classic ','. Indeed there is sometimes coma into addresses.<br />
 For importing card, add your csv in the form below
 </p>
 """
