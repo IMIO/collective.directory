@@ -33,7 +33,7 @@ class ICard(model.Schema, IBasic):
         required=False,
     )
 
-    zip_code = schema.Int(
+    zip_code = schema.TextLine(
         title=_(u"Zip code"),
         required=False,
     )
