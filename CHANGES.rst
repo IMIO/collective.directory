@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2.7 (unreleased)
+0.2.7 (2016-01-08)
 ------------------
 
 - Add translation for all content types.
