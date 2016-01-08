@@ -52,7 +52,7 @@ You can import card from a csv file. This csv file should contains header :
         <li>email</li>
         <li>website</li>
     </ul>
-Other column will be added into content. The delimieter should be ";" and not classic ",". Indeed there is sometimes a coma into addresses.<br />
+Other column will be added into content.
 For importing card, add your csv in the form below
 </p>
 """
@@ -118,7 +118,7 @@ class CollectiveDirectoryImportForm(form.SchemaForm):
             headers.remove('title')
             zip_code = get_cell(row, u'zip_code')
             if zip_code:
-                card.zip_code = int(zip_code)
+                card.zip_code = zip_code
             headers.remove('zip_code')
             for field in fields:
                 if field in headers:

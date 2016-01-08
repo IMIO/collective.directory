@@ -6,11 +6,18 @@
     <!-- this is our custom view -->
     <browser:page
         name="collective_directory_import_view"
-        for="*"
+        for="collective.directory.content.directory.IDirectory"
         permission="zope2.View"
         class=".collective_directory_import_view.CollectiveDirectoryImportForm"
         />
-
+    
+    <browser:page
+        name="collective_directory_assign_geolocation"
+        for="collective.directory.content.directory.IDirectory"
+        permission="zope2.View"
+        class=".collective_directory_assign_geolocation.CollectiveDirectoryAssignGeolocation"
+        />
+        
     <browser:page
       for="collective.directory.content.directory.IDirectory"
       name="json.js"
