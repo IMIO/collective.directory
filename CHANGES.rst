@@ -10,7 +10,8 @@ Changelog
 0.2.5 (2016-01-08)
 ------------------
 
-- Nothing changed yet.
+- Add new view to set Geolocation to each Cards in a directory.
+- Change zip_code schema from int to string.
 
 
 0.2.4 (2015-07-07)
