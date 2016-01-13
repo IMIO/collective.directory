@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2.9 (unreleased)
+0.2.9 (2016-01-13)
 ------------------
 
 - Add new method that clean a string. Use it to change category_name to category_id when importing cards from csv.
