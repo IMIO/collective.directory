@@ -190,8 +190,6 @@ class CollectiveDirectoryImportForm(form.SchemaForm):
         if not location:
             location = get_address(GoogleV3(), address, 'Google')
         if not location:
-            location = get_address(OpenMapQuest(), address, 'OpenMapQuest')
-        if not location:
             return
         return location
 
