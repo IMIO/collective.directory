@@ -10,7 +10,7 @@ Changelog
 0.2.8 (2016-01-13)
 ------------------
 
-- Nothing changed yet.
+- Remove service OpenMapQuest.
 
 
 0.2.7 (2016-01-08)
