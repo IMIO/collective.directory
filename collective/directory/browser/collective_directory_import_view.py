@@ -17,6 +17,8 @@ import StringIO
 import copy
 import csv
 import logging
+import unicodedata
+
 logger = logging.getLogger('collective.directory import csv')
 
 
@@ -161,12 +163,13 @@ class CollectiveDirectoryImportForm(form.SchemaForm):
 
     def create_category(self, category_name):
         context = self.context
-        if category_name in context.keys():
-            return context.get(category_name)
+        category_id = clean_special_chars(category_name)
+        if category_id in context.keys():
+            return context.get(category_id)
         else:
             category = api.content.create(
                 type='collective.directory.category',
-                id=category_name,
+                id=category_id,
                 title=category_name,
                 container=context
             )
@@ -204,3 +207,16 @@ def get_address(geolocator, address, geolocator_name):
         logger.error("{} didn't know this address '{}'".format(geolocator_name, address))
         return False
     return {'lat': location.latitude, 'lon': location.longitude}
+
+
+def clean_special_chars(str):
+    return_string = str
+    if type(str) is unicode:
+        nkfd_form = unicodedata.normalize('NFKD', str)
+        return_string = nkfd_form.encode('ASCII', 'ignore')
+    if "&" in return_string:
+        return_string = return_string.replace("&", _(u"and"))
+    chars_to_remove = (":]°`µ+<['>|\\/$?")
+    for char in chars_to_remove:
+        return_string = return_string.replace(char, "")
+    return return_string
