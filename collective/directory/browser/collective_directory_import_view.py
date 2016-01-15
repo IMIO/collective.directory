@@ -216,7 +216,7 @@ def clean_special_chars(str):
         return_string = nkfd_form.encode('ASCII', 'ignore')
     if "&" in return_string:
         return_string = return_string.replace("&", _(u"and"))
-    chars_to_remove = (":]°`µ+<['>|\\/$?")
+    chars_to_remove = (":]+<['>|\\/$?")
     for char in chars_to_remove:
         return_string = return_string.replace(char, "")
     return return_string
