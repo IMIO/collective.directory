@@ -34,6 +34,7 @@ class CollectiveDirectoryAssignGeolocation(object):
                     self.print_bad_location += "GOOD => <a href=" + url + ">" + url + "</a><br>"
                 else:
                     self.print_bad_location += "BAD => <a href=" + url + ">" + url + "</a><br>"
+            card.reindexObject()
 
     def get_xy_from_address(self, card):
         location = None
