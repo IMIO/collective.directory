@@ -1,10 +1,11 @@
 Changelog
 =========
 
-0.2.10 (unreleased)
+0.2.10 (2016-01-15)
 -------------------
 
-- Nothing changed yet.
+- remove special chars in str replacement
+- reindex cards in collective_directory_assign_geolocation view
 
 
 0.2.9 (2016-01-13)
