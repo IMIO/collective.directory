@@ -1,7 +1,6 @@
 from collective.geo.behaviour.interfaces import ICoordinates
 from geopy.geocoders.osm import Nominatim
 from geopy.geocoders.googlev3 import GoogleV3
-#from geopy.geocoders.openmapquest import OpenMapQuest
 from geopy.exc import GeocoderTimedOut
 
 from Products.CMFCore.utils import getToolByName
