@@ -12,6 +12,13 @@
         />
     
     <browser:page
+        name="collective_directory_export_view"
+        for="collective.directory.content.directory.IDirectory"
+        permission="zope2.View"
+        class=".collective_directory_export_view.CollectiveDirectoryExportForm"
+        />    
+    
+    <browser:page
         name="collective_directory_assign_geolocation"
         for="collective.directory.content.directory.IDirectory"
         permission="zope2.View"

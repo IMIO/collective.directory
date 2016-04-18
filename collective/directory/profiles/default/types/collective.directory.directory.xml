@@ -63,4 +63,10 @@
     visible="True">
     <permission value="Modify portal content" />
   </action>
+  <action title="Export" action_id="collective_directory_export"
+    category="object" condition_expr=""
+    url_expr="string:${object_url}/collective_directory_export_view"
+    visible="True">
+    <permission value="Modify portal content" />
+  </action>  
 </object>
