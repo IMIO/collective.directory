@@ -1,10 +1,10 @@
 Changelog
 =========
 
-0.2.11 (unreleased)
+0.2.11 (2016-04-18)
 -------------------
 
-- Nothing changed yet.
+- Add a new view "collective_directory_export_view" on directory to export cards to csv file.
 
 
 0.2.10 (2016-01-15)
