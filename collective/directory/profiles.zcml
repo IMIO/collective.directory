@@ -72,7 +72,7 @@
         title="View to export cards"
         description="New view to export directory's cards to csv file."
         profile="collective.directory:default"
-        handler=".upgrades.upgrade_5_to_6"
+        handler=".upgrades.update_5_to_6"
         />
 
 </configure>
