@@ -66,4 +66,13 @@
         handler=".upgrades.set_translatable"
         />
 
+    <genericsetup:upgradeStep
+        source="5"
+        destination="6"
+        title="View to export cards"
+        description="New view to export directory's cards to csv file."
+        profile="collective.directory:default"
+        handler=".upgrades.upgrade_5_to_6"
+        />
+
 </configure>

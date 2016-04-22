@@ -52,3 +52,7 @@ def update_3_to_4(context):
 def set_translatable(context):
     setup = getToolByName(context, 'portal_setup')
     setup.runAllImportStepsFromProfile('profile-collective.directory:default')
+
+
+def update_5_to_6(context):
+    context.runImportStepFromProfile('profile-collective.directory:default', 'typetools')
