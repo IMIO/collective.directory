@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2.13 (unreleased)
+0.2.13 (2016-04-27)
 -------------------
 
 - Fix typo import step registry.
