@@ -55,4 +55,4 @@ def set_translatable(context):
 
 
 def update_5_to_6(context):
-    context.runImportStepFromProfile('profile-collective.directory:default', 'typetools')
+    context.runImportStepFromProfile('profile-collective.directory:default', 'typeinfo')

@@ -4,7 +4,7 @@ Changelog
 0.2.13 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fix typo import step registry.
 
 
 0.2.12 (2016-04-27)
