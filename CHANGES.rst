@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2.12 (unreleased)
+0.2.12 (2016-04-27)
 -------------------
 
 - Add upgrade step for export view (to csv file).
