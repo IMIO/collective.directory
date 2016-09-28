@@ -4,7 +4,8 @@ Changelog
 0.2.14 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fix geomap import from collective.geo.leaflet.
+  [bsuttor]
 
 
 0.2.13 (2016-04-27)

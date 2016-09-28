@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 
 from collective.directory import _
+from collective.geo.leaflet import geomap
 from five import grok
 from plone.supermodel import model
-from zope import schema
-from collective.geo.leaflet import geomap
-grok.templatedir('templates')
-import json
 from Products.CMFCore.utils import getToolByName
+from zope import schema
+
+import json
+
+
+grok.templatedir('templates')
 
 
 class IDirectory(model.Schema):
@@ -31,7 +34,7 @@ class Directory(grok.View):
 
     def __init__(self, context, request):
         super(Directory, self).__init__(context, request)
-        self.geomap = geomap.GeoMap(context, request)
+        self.geomap = geomap.GeoMap(context)
 
     def get_directory_geojsons_url(self):
         return "{}/@@geo-json.json".format(self.context.absolute_url())
