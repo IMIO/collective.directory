@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2.14 (unreleased)
+0.2.14 (2016-09-28)
 -------------------
 
 - Fix geomap import from collective.geo.leaflet.
