@@ -37,7 +37,7 @@
 
               <p tal:content="structure card/fax" class="card-fax" />
 
-              <p class="card-website">
+              <p class="card-email">
                 <a tal:attributes="href string:mailto:${card/email}"
                    tal:content="card/email" />
               </p>
