@@ -4,7 +4,8 @@ Changelog
 0.2.15 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Set good class for listingcards.pt
+  [mgennart]
 
 
 0.2.14 (2016-09-28)
