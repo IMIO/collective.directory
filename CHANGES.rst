@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2.15 (unreleased)
+0.2.15 (2017-02-08)
 -------------------
 
 - Set good class for listingcards.pt
